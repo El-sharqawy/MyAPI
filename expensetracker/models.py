@@ -28,7 +28,7 @@ class Transaction(models.Model):
 
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name="transactions")
     income_source = models.ForeignKey(IncomeSource, on_delete=models.SET_NULL, null=True, blank=True)
-    expanses = models.ForeignKey(Expense, on_delete=models.SET_NULL, null=True, blank=True)
+    expenses = models.ForeignKey(Expense, on_delete=models.SET_NULL, null=True, blank=True)
     amount = models.DecimalField(max_digits=10, decimal_places=2, validators = [MinValueValidator(0.01)])
     transaction_date = models.DateField()
     description = models.TextField(blank=True)
