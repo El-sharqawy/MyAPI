@@ -70,7 +70,7 @@ class TransactionSummaryView(APIView):
         if start_date:
             transactions = transactions.filter(transaction_date__gte=start_date)
 
-        if start_date:
+        if end_date:
             transactions = transactions.filter(transaction_date__gte=end_date)
 
         income = transactions.filter(type="INCOME").aggregate(Sum("amount"))["amount__sum"] or 0

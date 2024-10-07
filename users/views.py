@@ -13,12 +13,12 @@ class CreateUserView(generics.CreateAPIView):
 
 
 class UserDetailView(generics.RetrieveUpdateAPIView):
-    query_set = CustomUser.objects.all()
+    queryset = CustomUser.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
 class UserBalanceView(APIView):
-    query_set = CustomUser.objects.all()
+    queryset = CustomUser.objects.all()
 
     def get(self, request):
         return Response({"balance": request.user.current_balance})
