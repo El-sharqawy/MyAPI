@@ -5,22 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 from django.db.models import QuerySet, Sum
 from .models import IncomeSource, Expense, Transaction
 from users.models import CustomUser
-from .serializers import UserSerializer, IncomeSourceSerializer, ExpenseSerializer, TransactionSerializer
-
-class UserCreateView(generics.CreateAPIView):
-    query_set = CustomUser.objects.all()
-    serializer_class = UserSerializer
-
-class UserDetailView(generics.RetrieveUpdateAPIView):
-    query_set = CustomUser.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
-
-class UserBalanceView(APIView):
-    query_set = CustomUser.objects.all()
-
-    def get(self, request):
-        return Response({"balance": request.user.current_balance})
+from .serializers import IncomeSourceSerializer, ExpenseSerializer, TransactionSerializer
 
 class IncomeSourceListCreateView(generics.ListCreateAPIView):
     serializer_class = IncomeSourceSerializer

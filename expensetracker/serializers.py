@@ -1,11 +1,6 @@
 from rest_framework import serializers
-from users.models import CustomUser
 from .models import IncomeSource, Expense, Transaction
 
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ['id', 'username', 'email', 'current_balance']
 
 class IncomeSourceSerializer(serializers.ModelSerializer):
     class Meta:
