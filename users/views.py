@@ -12,7 +12,6 @@ class CreateUserView(generics.CreateAPIView):
     permission_classes = [AllowAny]
 
 
-
 class UserDetailView(generics.RetrieveUpdateAPIView):
     query_set = CustomUser.objects.all()
     serializer_class = UserSerializer
